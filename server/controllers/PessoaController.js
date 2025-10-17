@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const Pessoa = require('../models/Pessoa');
 
 const PessoaController = {
@@ -11,6 +12,26 @@ const PessoaController = {
     }
   },
 
+  async filterByName(req, res) {
+    try {
+      const { filtro } = req.body;
+
+      const pessoas = await Pessoa.findAll(
+        {
+          where: {
+            nome: {
+              [Op.iLike]: `%${filtro}%`
+            }
+          }
+        });
+
+      res.status(200).json(pessoas);
+    } catch (error) {
+      console.error('Erro ao buscar pessoas:', error);
+      res.status(500).json({ error: 'Erro ao buscar pessoas' });
+    }
+  },
+  
   async create(req, res) {
     try {
       const pessoa = await Pessoa.create(req.body);
