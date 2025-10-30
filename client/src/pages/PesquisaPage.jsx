@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import '../App.css';
+import Navbar from './Navbar';
 
 function Pesquisa() {
 
@@ -34,18 +35,17 @@ function Pesquisa() {
 
   return (
     <>
+      <Navbar />
+
       <div>
         <h1>Pesquisa de Pessoas</h1>
-        <input type="text" value={filtro} onChange={(filtro) => setTexto(filtro.target.value)} placeholder="Pesquise por nome"/>
+        <input type="text" value={filtro} onChange={(filtro) => 
+          setTexto(filtro.target.value)} placeholder="Pesquise por nome"/>
 
-        <br />
-        <br />
-
-        <button onClick={pesquisarPessoas}>Pesquisar</button>
-        <button onClick={navegarParaCadastro}>Cadastrar</button>
-
-        <br />
-        <br />
+        <div className="btn-pesquisa-page">
+          <button onClick={pesquisarPessoas}>Pesquisar</button>
+          <button onClick={navegarParaCadastro}>Cadastrar</button>
+        </div>
 
         <table>
           <thead>
@@ -78,4 +78,4 @@ function Pesquisa() {
   )
 }
 
-export default Pesquisa
+export default Pesquisa;

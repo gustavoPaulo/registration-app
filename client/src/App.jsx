@@ -1,7 +1,11 @@
-import Routes from "./routes/Routes";
+import Navbar from './pages/Navbar';
+import Dashboard from './pages/DashboardPage';
 
 export default function App() {
-   return (
-       <Routes/>
-   );
+  return (
+    <>
+      <Navbar />
+      <Dashboard />
+    </>
+  );
 }
